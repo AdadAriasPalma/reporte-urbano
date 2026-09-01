@@ -1,0 +1,20 @@
+{
+    "name": "Reporte Urbano",
+    "short_name": "Reporte Urbano",
+    "description": "Captura ciudadana de fallas en vía pública",
+    "start_url": "./",
+    "display": "standalone",
+    "background_color": "#f5f7fa",
+    "theme_color": "#2563eb",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": ["utilities", "productivity"],
+    "lang": "es"
+}

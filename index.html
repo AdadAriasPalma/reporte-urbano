@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reporte Urbano - Captura ciudadana de fallas en vía pública">
+    <meta name="theme-color" content="#2563eb">
+    <title>Reporte Urbano</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Reporte Urbano</h1>
+        <p class="subtitle">Captura ciudadana de fallas en vía pública</p>
+    </header>
+
+    <main class="app-main">
+        <!-- Formulario de reporte -->
+        <section class="form-section" aria-labelledby="form-title">
+            <h2 id="form-title">Nuevo Reporte</h2>
+            <form id="report-form" class="report-form" novalidate>
+                <div class="form-group">
+                    <label for="titulo">Título *</label>
+                    <input type="text" id="titulo" name="titulo" required 
+                           placeholder="Ej: Bache en Av. Principal" 
+                           maxlength="100" autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                    <label for="descripcion">Descripción *</label>
+                    <textarea id="descripcion" name="descripcion" required 
+                              placeholder="Describe la falla, ubicación exacta, gravedad..." 
+                              rows="4" maxlength="500"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="foto">Fotografía (opcional)</label>
+                    <input type="file" id="foto" name="foto" accept="image/*" capture="environment">
+                </div>
+
+                <!-- Contenedor para previsualizar la fotografía cargada en Base64 -->
+                <div class="form-group preview-container" id="preview-container" hidden>
+                    <label>Previsualización</label>
+                    <div class="preview-wrapper">
+                        <img id="preview-image" alt="Previsualización de la fotografía">
+                        <button type="button" class="btn-remove-photo" id="btn-remove-photo" aria-label="Eliminar fotografía">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit" id="btn-submit">
+                    <span class="btn-text">Guardar Reporte</span>
+                    <span class="btn-loader" hidden></span>
+                </button>
+            </form>
+        </section>
+
+        <!-- Lista de reportes guardados localmente -->
+        <section class="reports-section" aria-labelledby="reports-title">
+            <div class="section-header">
+                <h2 id="reports-title">Reportes Guardados</h2>
+                <span class="reports-count" id="reports-count">0 reportes</span>
+            </div>
+            <div class="reports-list" id="reportes-lista" role="list" aria-label="Lista de reportes pendientes">
+                <!-- Los reportes se renderizan dinámicamente aquí -->
+            </div>
+            <div class="empty-state" id="empty-state">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <p>No hay reportes guardados</p>
+                <small>Tus reportes aparecerán aquí después de guardarlos</small>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>Reporte Urbano - PWA para captura ciudadana</p>
+        <p class="offline-indicator" id="offline-indicator" hidden>Modo offline - Los reportes se guardan localmente</p>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
